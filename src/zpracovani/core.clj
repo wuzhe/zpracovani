@@ -1,7 +1,7 @@
 (ns zpracovani.core
-  (:use [clojure.data.json :as json]
-        zpracovani.util)
-  (:require [clj-http.client :as cclient]))
+  (:use zpracovani.util)
+  (:require [clj-http.client :as cclient]
+            [clojure.data.json :as json]))
 
 (def ^:dynamic *client-version* (System/getProperty "zpracovani.version"))
 (def ^:dynamic *application-id* nil)
@@ -36,7 +36,7 @@
 
 (defn prepare-request 
   "Prepares the HTTP request"
-  [request-method request-uri first-args query-params where body auth]
+  [request-method request-uri first-args query-params where content-type body auth]
   (let [real-uri (apply format request-uri first-args)]
     {:method request-method
      :url real-uri
@@ -44,7 +44,7 @@
      :query-params (if-not (empty? where)
                      (assoc query-params :where (json/json-str where))
                      query-params)
-     :content-type :json
+     :content-type content-type
      :headers {"User-Agent" user-agent}
      :body (if-not (empty? body)
              (json/json-str body))}))
@@ -58,6 +58,7 @@
            first-args# (first split-args#)
            next-args# (second split-args#)
            auth# (vector *application-id* *master-key*)
+           content-type# (get next-args# :content-type :json)
            body# (get next-args# ~body-keyword)
            where# (:where next-args#)
            query-params# (dissoc next-args# :where ~body-keyword)
@@ -66,7 +67,7 @@
                                      first-args#
                                      query-params#
                                      where#
+                                     content-type#
                                      body#
                                      auth#)]
        (execute-request request#))))
-
