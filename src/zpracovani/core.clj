@@ -47,7 +47,9 @@
      :content-type content-type
      :headers {"User-Agent" user-agent}
      :body (if-not (empty? body)
-             (json/json-str body))}))
+             (if (= :json content-type)
+               (json/json-str body)
+               body))}))
 
 (defmacro def-parse-method
   "Macro to create the Parse API calls"
