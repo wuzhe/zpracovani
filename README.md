@@ -10,7 +10,7 @@ Familiarize yourself with the Parse REST API
 In your project.clj:
 
 ```
-[zpracovani "0.0.1"]
+[zpracovani "0.2.0"]
 ```
 
 ```clojure

@@ -1,4 +1,4 @@
-(defproject zpracovani "0.1.0"
+(defproject zpracovani "0.2.0"
   :description "zpracovani: parse.com API client in Clojure"
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [org.clojure/data.json "0.2.2"]
