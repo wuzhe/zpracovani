@@ -8,7 +8,7 @@
 ;; create a file
 ;;
 ;;`(create "Hello.txt" :content-type "text/plain" :data "Hello, World!")`
-(def-parse-files-method create :post "files/%s" :data)
+(def-parse-files-method create :post "s3/%s" :data)
 
 ;; delete a file
 ;;
