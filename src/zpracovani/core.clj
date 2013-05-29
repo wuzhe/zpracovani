@@ -15,7 +15,7 @@
 (defmacro with-credentials
   "Use the Parse API Application ID and Master Key for the contained methods."
   [host id key & body]
-  `(binding [*api-url* ~host
+  `(binding [*api-host* ~host
              *application-id* ~id
              *master-key* ~key]
      (do 
