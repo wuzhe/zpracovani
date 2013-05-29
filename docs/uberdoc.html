@@ -2619,7 +2619,7 @@ $(document).ready(function() {
   &quot;Macro to create the Parse API calls&quot;
   [name request-method path &amp; [body-keyword]]
   `(defn ~name [&amp; args#]
-     (let [request-uri# (str &quot;https://&quot; *api-url* &quot;/&quot; *api-version* &quot;/&quot; ~path)
+     (let [request-uri# (str &quot;https://&quot; *api-host* &quot;/&quot; *api-version* &quot;/&quot; ~path)
            split-args# (split-positional-args args#) 
            first-args# (first split-args#)
            next-args# (second split-args#)
