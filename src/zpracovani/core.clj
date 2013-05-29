@@ -55,7 +55,7 @@
   "Macro to create the Parse API calls"
   [name request-method path & [body-keyword]]
   `(defn ~name [& args#]
-     (let [request-uri# (str "https://" *api-url* "/" *api-version* "/" ~path)
+     (let [request-uri# (str "https://" *api-host* "/" *api-version* "/" ~path)
            split-args# (split-positional-args args#) 
            first-args# (first split-args#)
            next-args# (second split-args#)
