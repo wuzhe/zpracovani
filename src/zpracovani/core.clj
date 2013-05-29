@@ -47,6 +47,7 @@
                      query-params)
      :content-type content-type
      :headers {"User-Agent" user-agent}
+     :insecure? true
      :body (if (= :json content-type)
              (json/json-str body)
              body)}))
