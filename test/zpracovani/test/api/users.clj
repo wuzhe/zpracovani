@@ -8,7 +8,7 @@
         clojure.test))
 
 (deftest users-test
-  (with-credentials *parse-application-id* *parse-master-key*
+  (with-credentials *parse-api-host* *parse-application-id* *parse-master-key*
     (let [user {:username (re-rand #"[A-Za-z0-9]{10}")
                 :password (re-rand #"[A-Za-z0-9]{10}")}
           new-user (signup :user user)

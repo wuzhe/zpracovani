@@ -6,16 +6,17 @@
 (def ^:dynamic *client-version* (System/getProperty "zpracovani.version"))
 (def ^:dynamic *application-id* nil)
 (def ^:dynamic *master-key* nil)
+(def ^:dynamic *api-host* nil)
 
-(def ^:dynamic *api-url* "api.parse.com")
 (def ^:dynamic *api-version* "1")
 
 (def user-agent (str "zpracovani/" *client-version*))
 
 (defmacro with-credentials
   "Use the Parse API Application ID and Master Key for the contained methods."
-  [id key & body]
-  `(binding [*application-id* ~id
+  [host id key & body]
+  `(binding [*api-url* ~host
+             *application-id* ~id
              *master-key* ~key]
      (do 
        ~@body)))

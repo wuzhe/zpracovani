@@ -21,7 +21,8 @@ In your project.clj:
 
 (def my-app-id "<your application id>")
 (def my-master-key "<your master key>")
-(with-credentials my-app-id my-master-key
+(def my-api-host "<your api provider host>")
+(with-credentials my-api-host my-app-id my-master-key
     ;; signup a user
     (zu/signup :user {:username "jan" :password "secret"})
     ;; store an object

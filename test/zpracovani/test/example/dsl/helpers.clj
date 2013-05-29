@@ -16,7 +16,7 @@
 (defmacro defn-method
   [name class]
   `(defn ~name [& criteria#]
-     (with-credentials *parse-application-id* *parse-master-key*
+     (with-credentials *parse-api-host* *parse-application-id* *parse-master-key*
        (zo/query ~class :where (apply query criteria#)))))
 
 ;; these helpers wrap up common queries against our record collection. 

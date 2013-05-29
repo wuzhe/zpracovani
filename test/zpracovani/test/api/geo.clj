@@ -6,7 +6,7 @@
         clojure.test))
 
 (deftest geo-points
-  (with-credentials *parse-application-id* *parse-master-key*
+  (with-credentials *parse-api-host* *parse-application-id* *parse-master-key*
     (let [parks (read-string (slurp "resources/parks.txt"))]
 
       (doseq [p parks]

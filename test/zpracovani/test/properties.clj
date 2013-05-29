@@ -8,6 +8,10 @@
                        (.getContextClassLoader)
                        (.getResourceAsStream "test.properties"))))))
 
+(def ^:dynamic *parse-api-host*
+  (or (get *props* "parse.host")
+      (throw (Exception. "supply your provider api host"))))
+
 (def ^:dynamic *parse-application-id*
   (or (get *props* "parse.application.id")
       (throw (Exception. "supply your Parse Application ID in resources/test.properties to run the tests"))))

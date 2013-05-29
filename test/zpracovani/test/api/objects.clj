@@ -6,7 +6,7 @@
         clojure.test))
 
 (deftest objects-test
-  (with-credentials *parse-application-id* *parse-master-key*
+  (with-credentials *parse-api-host* *parse-application-id* *parse-master-key*
     (let [releases (read-string (slurp "resources/vermiform.txt"))
           results (doall (map #(create *zpracovani-test-class* :object  %) releases))]
       (is (= 17 (count (:results (query *zpracovani-test-class*)))))
