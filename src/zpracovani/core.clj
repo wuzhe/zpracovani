@@ -46,7 +46,9 @@
                      (assoc query-params :where (json/json-str where))
                      query-params)
      :content-type content-type
-     :headers {"User-Agent" user-agent}
+     :headers {"User-Agent" user-agent
+               "X-Uluru-Application-Id" (first auth)
+               "X-Uluru-Application-Key" (second auth)}
      :insecure? true
      :body (if (= :json content-type)
              (json/json-str body)
